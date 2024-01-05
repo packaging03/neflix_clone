@@ -18,10 +18,19 @@
 
 body {
   color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
+  @apply bg-zinc-900 h-full overflow-x-hidden;
+  /* background: linear-gradient(
       to bottom,
       transparent,
       rgb(var(--background-end-rgb))
     )
-    rgb(var(--background-start-rgb));
+    rgb(var(--background-start-rgb)); */
+}
+
+#__next {
+  @apply h-full;
+}
+
+html {
+  @apply h-full;
 }

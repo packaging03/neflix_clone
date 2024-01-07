@@ -2,6 +2,9 @@
 /* eslint-disable @next/next/no-img-element */
 import React, { useCallback, useState } from "react";
 import Input from "./components/Input";
+import imgLogo from "../../public/images/logo.png";
+import Image from "next/image";
+import axios from "axios";
 
 function Auth() {
   const [email, setEmail] = useState("");
@@ -14,11 +17,19 @@ function Auth() {
     );
   }, []);
 
+  const register = useCallback(async () => {
+    try {
+      await axios.post("/api/register", { email, name, password });
+    } catch (error) {
+      console.log(error);
+    }
+  }, []);
+
   return (
     <div className="relative h-full w-full bg-[url('../../public/images/hero.jpg')] bg-no-repeat bg-center bg-fixed bg-cover">
       <div className="bg-black w-full h-full lg:bg-opacity-50">
         <nav className="px-12 py-5">
-          <img src="../../public/images/hero.jpg" alt="Logo" className="h-12" />
+          <Image src={imgLogo} alt="Logo" className="h-12 w-24" />
         </nav>
         <div className="flex justify-center">
           <div className="bg-black bg-opacity-70 px-16 py-16 self-center mt-2 lg:w-2/5 lg:max-w-md rounded-md w-full">
